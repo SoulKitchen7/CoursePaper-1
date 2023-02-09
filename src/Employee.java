@@ -4,6 +4,12 @@ public class Employee {
     private double salary;
     private static int counter;
     private int id;
+    public Employee(String name, int department, double salary) {
+        id = ++ counter;
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
+    }
 
     public String getName() {
         return name;
@@ -17,10 +23,6 @@ public class Employee {
         return salary;
     }
 
-    public static int getCounter() {
-        return counter;
-    }
-
     public int getId() {
         return id;
     }
@@ -31,13 +33,6 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
-    }
-
-    public Employee(int id, String name, int department, double salary) {
-        this.name = name;
-        this.department = department;
-        this.salary = salary;
-        this.id = id;
     }
 
     @Override

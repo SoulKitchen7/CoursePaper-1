@@ -29,6 +29,8 @@ public class Main {
         System.out.println("");
         indexSalary();
         System.out.println("");
+        employeeWithMinSalaryInDepartment();
+
 
 
 
@@ -43,7 +45,7 @@ public class Main {
 
     // Метод b - посчитать сумму затрат на зарплаты в месяц
     public static double sumSalary() {
-        double sum = 0;
+        int sum = 0;
         for (Employee i : employee) {
             sum += i.getSalary();
         }
@@ -52,10 +54,10 @@ public class Main {
     // Метод с - найти сотрудника с минимальной зарплатой
 
     public static void employeeWithMinSalary() {
-        double minSalary = employee[0].getSalary();
+        int minSalary = employee[0].getSalary();
         String name = employee[0].getName();
         for (Employee i : employee) {
-            final double current = i.getSalary();
+            final int current = i.getSalary();
             final String employeeWithMinSalary = i.getName();
             if (current < minSalary) {
                 minSalary = current;
@@ -67,10 +69,10 @@ public class Main {
 
     // Метод d - найти сотрудника с максимальной зарплатой
     public static void employeeWithMaxSalary() {
-        double maxSalary = employee[0].getSalary();
+        int maxSalary = employee[0].getSalary();
         String name = employee[0].getName();
         for (Employee i : employee) {
-            final double current = i.getSalary();
+            final int current = i.getSalary();
             final String employeeWithMaxSalary = i.getName();
             if (current > maxSalary) {
                 maxSalary = current;
@@ -96,11 +98,29 @@ public class Main {
     // Повышенная сложность - Метод индексации зарплаты на 10%
     public static void indexSalary() {
         for (Employee i : employee) {
-            double indexSalary = i.getSalary() * 1.1;
-            System.out.println(i.getName() + " " + indexSalary);
+            int index = 10;
+            double indexSalary = i.getSalary() * (1 + index/100d);
+            indexSalary = Math.round(indexSalary*10);
+            indexSalary = indexSalary/10;
+            System.out.println(i.getName() +" " +indexSalary);
         }
     }
 
     // Повышенная сложность - Метод поиска сотрудника с минимальной зарплатой по отделу
-
+    public static void employeeWithMinSalaryInDepartment() {
+        int minSalary = employee[0].getSalary();
+        String name = employee[0].getName();
+        int department = 2;
+        for (Employee i : employee) {
+            if (i.getDepartment() == department) {
+                final int current = i.getSalary();
+                final String employeeWithMinSalary = i.getName();
+                if (current < minSalary) {
+                    minSalary = current;
+                    name = employeeWithMinSalary;
+                }
+            }
+        }
+        System.out.println("Сотрудник с минимальной зарплатой в отделе - " + department + " - "  + name + " - " + minSalary + " рублей");
+    }
 }
